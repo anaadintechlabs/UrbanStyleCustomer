@@ -1,0 +1,5 @@
+<owl-carousel #owlElement [options]="options" [carouselClasses]="['owl-theme', 'row', 'sliding', 'carousel_1']">
+    <div class="slide" *ngFor="let product of productList">
+        <product-card [product] = "product"></product-card>
+    </div>
+</owl-carousel>

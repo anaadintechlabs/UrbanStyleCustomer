@@ -16,6 +16,7 @@ export interface User {
     deactivatedMessage: string
     deactivatedDate: Date
     firstTimeLogin: boolean
+    token : string
 }
 
 export enum UserType {

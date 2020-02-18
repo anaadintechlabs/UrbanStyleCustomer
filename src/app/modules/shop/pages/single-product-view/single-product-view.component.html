@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row py-4" *ngIf="singleProductData">
+        <div class="col-md-6 col-xs-12">
+            <product-image-slider [allImages]="singleProductData?.mainProductPacket?.allImages"></product-image-slider>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <product-description [description]="singleProductData?.mainProductPacket?.mainProduct"></product-description>
+            <reviews [reviews]="singleProductData?.allReviews"></reviews>
+        </div>
+    </div>
+    <div class="row py-4" *ngIf="singleProductData">
+        <div class="col-md-6 col-xs-12">
+            <product-image-slider [allImages]="singleProductData?.mainProductPacket?.allImages"></product-image-slider>
+        </div>
+       /
+    </div>
+</div>

@@ -1,8 +1,8 @@
 export const options = {
-    items: 3, 
+    items: 4, 
     dots: true, 
     navigation: true,
-    loop : true,
+    loop : false,
     nav: true,
     margin : 20
   }

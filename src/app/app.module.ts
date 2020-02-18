@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,10 @@ import { HeaderModule } from './modules/header/header.module';
 import { FooterModule } from './modules/footer/footer.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BlockModule } from './modules/blocks/block.module';
+import { JwtServiceService } from 'src/_service/http_&_login/jwt-service.service';
+import { CartSideMenuComponent } from './modules/header/components/cart-side-menu/cart-side-menu.component';
+import { CurrencyFormatPipe } from './shared/pipes/curruncy-formator';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,16 +23,24 @@ import { BlockModule } from './modules/blocks/block.module';
     RootComponent,
     HomeOneComponent,
     PageNotFoundComponent,
+    CartSideMenuComponent,
+    CurrencyFormatPipe,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule ,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     HeaderModule,
     FooterModule,
     HttpClientModule,
     BlockModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    JwtServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -61,7 +61,9 @@
         </div>
     </div>
 </section>
-<block-feature-product></block-feature-product>
+
+<block-feature-product *ngIf="featuredProduct && featuredProduct.length>0" title="Feature Product" [fratureProductList]="featuredProduct"></block-feature-product>
+<block-feature-product *ngIf="dealOfDays && dealOfDays.length>0" title="Deal of the Days" [fratureProductList]="dealOfDays"></block-feature-product>
 
 
 <section id="feature-products">
