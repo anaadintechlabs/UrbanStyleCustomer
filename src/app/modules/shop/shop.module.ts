@@ -7,6 +7,7 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { ShopHeaderComponent } from './components/shop-header/shop-header.component';
 import { AllProductsComponent } from './components/all-products/all-products.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +21,8 @@ import { AllProductsComponent } from './components/all-products/all-products.com
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ShopRoutingModule,
     SharedModule
   ]
