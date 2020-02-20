@@ -12,6 +12,7 @@ import { CartService } from "src/_service/product/cart.service";
 import { WishlistService } from "src/_service/product/wishlist.service";
 import { CompareService } from "src/_service/product/compare.service";
 import { ProductVerient } from 'src/_modals/product';
+import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: "product-card",
@@ -32,13 +33,14 @@ export class ProductCardComponent implements OnInit {
     private cd: ChangeDetectorRef,
     public cart: CartService,
     public wishlist: WishlistService,
-    public compare: CompareService
+    public compare: CompareService,
+    public currency : CurrencyService
   ) {}
 
   ngOnInit(): void {
-    // this.currency.changes$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-    //   this.cd.markForCheck();
-    // });
+    this.currency.changes$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.cd.markForCheck();
+    });
   }
 
   ngOnDestroy(): void {
@@ -54,7 +56,7 @@ export class ProductCardComponent implements OnInit {
     this.addingToCart = true;
     this.cart.add(this.product, 1).subscribe({
       complete: () => {
-        this.addingToCart = false;
+        // this.addingToCart = false;
         this.cd.markForCheck();
       }
     });

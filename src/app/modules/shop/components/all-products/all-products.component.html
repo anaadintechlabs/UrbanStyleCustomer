@@ -1,0 +1,11 @@
+<ng-container *ngIf="productList && productList.length > 0">
+    <div *ngFor="let item of productList">
+        <product-card [product]="item"></product-card>
+    </div>
+</ng-container>
+<ng-container *ngIf="productList && productList.length == 0">
+    <div class="text-center">
+        <p>No product Found</p>
+    </div>
+</ng-container>
+

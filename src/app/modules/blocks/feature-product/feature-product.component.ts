@@ -10,7 +10,7 @@ import { ProductVerient } from 'src/_modals/product';
 })
 export class BlockFeatureProductComponent implements OnInit {
   
-  @ViewChild('owlElement',{static:false}) owlElement: OwlCarousel;
+  @ViewChild('owlElement') owlElement: OwlCarousel;
   public options = options;
 
   @Input() fratureProductList : ProductVerient[];

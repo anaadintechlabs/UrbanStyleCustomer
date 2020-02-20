@@ -6,5 +6,6 @@ export const urls = {
     singleProduct : 'product/getSingleProductDetail',  
     menu : 'category/getAllCategories',
 
-    saveCart : 'shopping/addProductToShoppingCart'
+    saveCart : 'shopping/addProductToShoppingCart',
+    filter : 'product/applyHomePageFilter'
 }

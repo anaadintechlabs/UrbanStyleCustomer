@@ -1,7 +1,7 @@
 <div class="dropcart">
     <div class="cartHeader">
         Shopping Cart
-        <button type="button" class="dropcart_cancel float-right" (click)="hide()" [ngClass]="{'btn-loading': removedItems.includes(item)}">
+        <button type="button" class="dropcart_cancel float-right" (click)="hide()">
             <!-- <app-icon name="cross-10" size="10"></app-icon> -->
             <i class="fas fa-times"></i>
         </button>
@@ -20,7 +20,7 @@
                 <div class="dropcart__product-info col-md-8 nopadding">
                     <div class="dropcart__product-name">
                         <!-- <a [routerLink]="root.product(item.product.id)"> -->
-                            jhg+{{ item.product.productName }}
+                            {{ item.product.productName }}
                         <!-- </a> -->
                     </div>
 
@@ -34,7 +34,6 @@
                 </div>
                 <div class="col-md-2 nopadding">
                     <button type="button" class="dropcart_cancel" (click)="remove(item)" [ngClass]="{'btn-loading': removedItems.includes(item)}">
-                        <!-- <app-icon name="cross-10" size="10"></app-icon> -->
                         <i class="fas fa-times"></i>
                     </button>
                 </div>

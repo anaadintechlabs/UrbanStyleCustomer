@@ -14,6 +14,8 @@ import { User } from 'src/_modals/user';
 })
 export class UserService {
 
+  public redirectUrl: string;
+
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
@@ -86,6 +88,7 @@ export class UserService {
         map(data => {
           this.setAuth(data);
           this.navigateToDashboardBasedOnUserType(data.userType);
+          this.router.navigate[this.redirectUrl];
           return data;
         }
       ));

@@ -11,7 +11,7 @@ import { options } from '../../../../constants/owl-carousal';
 export class ProductCarouselComponent implements OnInit {
 
   @Input() productList : ProductVerient[];
-  @ViewChild('owlElement',{static:false}) owlElement: OwlCarousel;
+  @ViewChild('owlElement') owlElement: OwlCarousel;
   public options = options;
   
   constructor() { }
