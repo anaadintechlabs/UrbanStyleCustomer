@@ -22,7 +22,7 @@ export class ShopComponent implements OnInit {
       filterData : [],
       catId : ''
     }
-    this._apiService.post(urls.filter+'?searchString='+'phone'+'&catId='+4).subscribe(res=>{
+    this._apiService.post(urls.filter+'?searchString='+'COTTON'+'&catId='+4).subscribe(res=>{
       console.log(res);
     })
   }
