@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { UserService } from 'src/_service/http_&_login/user-service.service';
 
 @Component({
   selector: 'right-menu',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightMenuComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn : boolean;
+  searchEnable : boolean = false;
+  public showSearch : EventEmitter<boolean> = new EventEmitter<boolean>(true);
+
+  constructor(
+    public _userService : UserService
+  ) {
+    this._userService.isAuthenticated.subscribe(status=>{
+      console.log('status',status);
+      this.isLoggedIn = status;
+    })
+   }
 
   ngOnInit() {
+  }
+
+  searchClicked() {
+    this.searchEnable != this.searchEnable;
+    this.showSearch.emit(this.searchEnable);
   }
 
 }

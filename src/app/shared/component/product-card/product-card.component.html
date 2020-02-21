@@ -1,5 +1,5 @@
 <div class="main-slide-1-img" (click)="openPage()">
-    <img [src]="product.mainImageUrl"> 
+    <img [src]="product.mainImageUrl" onError="this.src='../../../../assets/img/bathrug.jpg'"> 
 </div>
 <div (click)="openPage()" class="main-product-name">
     <h6 class="product-name-pro">{{ product.product.productName }}</h6>

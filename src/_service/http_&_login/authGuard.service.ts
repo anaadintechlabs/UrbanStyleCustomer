@@ -19,28 +19,32 @@ export class AuthGuardService implements CanActivateChild {
       private userService: UserService
     ) {
     // this.data.currentStatus.subscribe(login => this.loginStatus = login);
-    this.user = JSON.parse(this.userService.getUser());
+    // this.user = JSON.parse(this.userService.getUser());
   }
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    this.user = JSON.parse(this.userService.getUser());
+      if(this.userService.getUser()) {
+        this.user = JSON.parse(this.userService.getUser());
+      } else {
+        this.user = undefined;
+      }
     return this.checkLogin(state.url);
   }
 
   checkLogin(url: string): boolean {
       console.log(this.user);
       if(this.user){
-          if(!Object.keys(this.user).length){
+          if(Object.keys(this.user).length){
               return true;
           } else {
               this.userService.redirectUrl = url;
-              this.router.navigate['/classic/account/login']
-              return false;
+              this.router.navigateByUrl('/classic/account/login');
+              return true;
           }
       } else {
         this.userService.redirectUrl = url;
-        this.router.navigate['/classic/account/login']
-        return false;
+        this.router.navigateByUrl('/classic/account/login');
+        return true;
       }
   }
 }

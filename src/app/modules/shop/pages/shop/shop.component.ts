@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/_service/http_&_login/api.service';
 import { urls } from 'src/constants/urlLists';
+import { ProductService } from 'src/_service/product/product.service';
+import { FilterRequest } from 'src/_modals/filter';
+
 
 @Component({
   selector: 'app-shop',
@@ -9,21 +12,30 @@ import { urls } from 'src/constants/urlLists';
 })
 export class ShopComponent implements OnInit {
 
-  constructor(
-    private _apiService : ApiService
-  ) { }
+  allData : any;
 
-  ngOnInit(): void {
-    this.getAllProduct();
+  constructor(
+    private _apiService : ApiService,
+    public  _productService : ProductService,
+  ) { 
+    this._productService.filter$.subscribe(data=>{
+      console.log(data);
+      this.getAllProduct(data as FilterRequest);
+    })
   }
 
-  getAllProduct() {
+  ngOnInit(): void {
+    // this.getAllProduct(this._productService.curruntRequest);
+  }
+
+  getAllProduct(data:FilterRequest) {
     let body = {
-      filterData : [],
-      catId : ''
+      filterData : data.filterData,
+      catId : data.catId
     }
-    this._apiService.post(urls.filter+'?searchString='+'COTTON'+'&catId='+4).subscribe(res=>{
+    this._apiService.post(urls.filter+'?searchString='+data.searchString+'&catId='+data.catId).subscribe(res=>{
       console.log(res);
+      this.allData = res.data.HomePageFilter;
     })
   }
 

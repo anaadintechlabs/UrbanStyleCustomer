@@ -88,7 +88,7 @@ export class UserService {
         map(data => {
           this.setAuth(data);
           this.navigateToDashboardBasedOnUserType(data.userType);
-          this.router.navigate[this.redirectUrl];
+          this.router.navigateByUrl(this.redirectUrl);
           return data;
         }
       ));

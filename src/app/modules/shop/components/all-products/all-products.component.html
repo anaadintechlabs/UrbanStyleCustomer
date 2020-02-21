@@ -1,6 +1,8 @@
 <ng-container *ngIf="productList && productList.length > 0">
-    <div *ngFor="let item of productList">
-        <product-card [product]="item"></product-card>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let item of productList">
+            <product-card [product]="item"></product-card>
+        </div>
     </div>
 </ng-container>
 <ng-container *ngIf="productList && productList.length == 0">

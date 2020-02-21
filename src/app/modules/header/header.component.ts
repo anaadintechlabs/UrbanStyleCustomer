@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 export class HeaderComponent implements OnInit {
 
   menu : any[] = [];
+  showSearch : boolean = false;
 
   constructor(
     private _apiService : ApiService
