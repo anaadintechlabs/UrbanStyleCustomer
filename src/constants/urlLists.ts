@@ -5,7 +5,7 @@ export const urls = {
     dealOftheDay : 'product/getDealOftheDay',  
     singleProduct : 'product/getSingleProductDetail',  
     menu : 'category/getAllCategories',
-
+    saveWishList : 'wishlist/addProductToWishlist',
     saveCart : 'shopping/addProductToShoppingCart',
     filter : 'product/applyHomePageFilter',
     wishList : 'wishlist/getAllWishListOfUser'

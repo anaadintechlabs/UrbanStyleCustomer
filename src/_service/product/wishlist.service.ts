@@ -65,27 +65,16 @@ export class WishlistService implements OnDestroy {
     }
 
     private save(): void {
-        if(this._userService.getCurrentUser()) {
-            if(!Object.keys(this._userService.getCurrentUser()).length) {
-                localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
-                this.itemsSubject$.next(this.data.items);
-                this.saveCart();
-            } else {
-                localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
-                this.itemsSubject$.next(this.data.items);
-            }
-        } else {
-            this.itemsSubject$.next(this.data.items);
-            localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
-        }
+        localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
+        this.itemsSubject$.next(this.data.items);
+        this.saveCart();
     }
     
     private saveCart() {
-        this._apiService.post(urls.saveCart,this.allData()).subscribe(res=>{
+        this._apiService.post(urls.saveWishList,this.allData()).subscribe(res=>{
             console.log(res);
         })
     }
-
 
     private allData() : any {
         let currunt_user = JSON.parse(this._userService.getUser());
