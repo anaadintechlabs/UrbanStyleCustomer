@@ -7,6 +7,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { SettingComponent } from './components/setting/setting.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SettingComponent } from './components/setting/setting.component';
   ],
   imports: [
     CommonModule,
-    UserDashboardRoutingModule
+    UserDashboardRoutingModule,
+    SharedModule
   ]
 })
 export class UserDashboardModule { }

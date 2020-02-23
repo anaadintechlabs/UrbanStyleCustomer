@@ -45,11 +45,11 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  post(path: string, body: Object = {}): Observable<any> {
+  post(path: string, body: Object = {}, param?:Object): Observable<any> {
     console.log("path..." + environment.api_url + path);
     console.log("body..." , body);
     return this.http
-      .post(`${environment.api_url}${path}`, body)
+      .post(`${environment.api_url}${path}`, body , param)
       .pipe(catchError(this.formatErrors));
   }
 

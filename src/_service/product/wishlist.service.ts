@@ -3,6 +3,9 @@ import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { ProductVerient } from 'src/_modals/product';
+import { ApiService } from '../http_&_login/api.service';
+import { UserService } from '../http_&_login/user-service.service';
+import { urls } from 'src/constants/urlLists';
 
 interface WishlistData {
     items: ProductVerient[];
@@ -26,7 +29,9 @@ export class WishlistService implements OnDestroy {
 
     constructor(
         @Inject(PLATFORM_ID)
-        private platformId: any
+        private platformId: any,
+        private _apiService : ApiService,
+        private _userService : UserService
     ) {
         if (isPlatformBrowser(this.platformId)) {
             this.load();
@@ -60,11 +65,41 @@ export class WishlistService implements OnDestroy {
     }
 
     private save(): void {
-        localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
-
-        this.itemsSubject$.next(this.data.items);
+        if(this._userService.getCurrentUser()) {
+            if(!Object.keys(this._userService.getCurrentUser()).length) {
+                localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
+                this.itemsSubject$.next(this.data.items);
+                this.saveCart();
+            } else {
+                localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
+                this.itemsSubject$.next(this.data.items);
+            }
+        } else {
+            this.itemsSubject$.next(this.data.items);
+            localStorage.setItem('wishlistItems', JSON.stringify(this.data.items));
+        }
+    }
+    
+    private saveCart() {
+        this._apiService.post(urls.saveCart,this.allData()).subscribe(res=>{
+            console.log(res);
+        })
     }
 
+
+    private allData() : any {
+        let currunt_user = JSON.parse(this._userService.getUser());
+        let obj = {
+            user : {id:currunt_user.id},
+            productVariant : []
+        }
+        this.data.items.forEach(ele=>{
+            obj.productVariant.push({productVariantId : ele.productVariantId})
+        });
+        console.log(obj);
+        return obj;
+    }
+    
     private load(): void {
         const items = localStorage.getItem('wishlistItems');
 
@@ -72,6 +107,10 @@ export class WishlistService implements OnDestroy {
             this.data.items = JSON.parse(items);
             this.itemsSubject$.next(this.data.items);
         }
+    }
+
+    addTowishList() {
+        this._apiService.get
     }
 
     ngOnDestroy(): void {

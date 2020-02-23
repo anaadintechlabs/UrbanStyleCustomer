@@ -7,5 +7,6 @@ export const urls = {
     menu : 'category/getAllCategories',
 
     saveCart : 'shopping/addProductToShoppingCart',
-    filter : 'product/applyHomePageFilter'
+    filter : 'product/applyHomePageFilter',
+    wishList : 'wishlist/getAllWishListOfUser'
 }

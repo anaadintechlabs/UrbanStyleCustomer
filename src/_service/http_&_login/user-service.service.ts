@@ -21,9 +21,26 @@ export class UserService {
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
-  constructor(private jwtService:JwtServiceService,
-              private apiService:ApiService, private router: Router
-  ) { }
+  constructor(
+    private jwtService:JwtServiceService,
+    private apiService:ApiService, 
+    private router: Router
+  ) {
+    this.load();
+  }
+
+  load(){
+    if(this.getUser() && this.getUser().length){
+      let user : User = JSON.parse(this.getUser());
+      if(Object.keys(user).length){
+        this.currentUserSubject.next(user);
+        this.isAuthenticatedSubject.next(true);
+      } else {
+        this.currentUserSubject.next({} as User);
+        this.isAuthenticatedSubject.next(false);
+      }
+    }
+  }
 
   populate() {
     // If JWT detected, attempt to get & store user's info

@@ -13,8 +13,9 @@
             <!--Hover Icons-->
             <div class="hover-product-icon">
                 <div class="product-icon-btn-wrap">
-                    <a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick View"><i class="fas fa-search"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist" (click)="addToWishlist()"><i class="far fa-heart"></i></a>
+                    <a  data-toggle="tooltip" data-placement="left" title="" data-original-title="Quick View"><i class="fas fa-search"></i></a>
+                    <a *ngIf="_userService.isAuthenticated && !addingToWishlist" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist" (click)="addToWishlist()"><i class="far fa-heart"></i></a>
+                    <a *ngIf="_userService.isAuthenticated && addingToWishlist" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist" (click)="removeFromWishList()"><i class="fas fa-heart"></i></a>
                     <!-- <a href="#" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Compare"><i class="ti-reload"></i></a> -->
                 </div>
             </div>

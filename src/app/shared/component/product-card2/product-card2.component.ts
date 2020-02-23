@@ -13,6 +13,7 @@ import { WishlistService } from "src/_service/product/wishlist.service";
 import { CompareService } from "src/_service/product/compare.service";
 import { ProductVerient } from 'src/_modals/product';
 import { CurrencyService } from '../../services/currency.service';
+import { UserService } from 'src/_service/http_&_login/user-service.service';
 
 @Component({
   selector: 'productCard2',
@@ -29,14 +30,28 @@ export class ProductCard2Component implements OnInit {
   addingToWishlist = false;
   addingToCompare = false;
   showingQuickview = false;
+  isLoggedIn : boolean;
 
   constructor(
     private cd: ChangeDetectorRef,
     public cart: CartService,
     public wishlist: WishlistService,
     public compare: CompareService,
-    public currency : CurrencyService
-  ) {}
+    public currency : CurrencyService,
+    public _userService : UserService
+  ) {
+    setTimeout(() => {
+      let allWishListItem : ProductVerient[] = [];
+      if(localStorage.getItem('wishlistItems') && localStorage.getItem('wishlistItems').length) {
+        allWishListItem = JSON.parse(localStorage.getItem('wishlistItems'));
+        allWishListItem.forEach(element => {
+          if(this.product.productVariantId == element.productVariantId) {
+            this.addingToWishlist = true;
+          }
+        });
+      }
+    }, 300);
+  }
 
   ngOnInit(): void {
     this.currency.changes$.pipe(takeUntil(this.destroy$)).subscribe(() => {
@@ -75,10 +90,19 @@ export class ProductCard2Component implements OnInit {
     this.addingToWishlist = true;
     this.wishlist.add(this.product).subscribe({
       complete: () => {
-        this.addingToWishlist = false;
+        // this.addingToWishlist = false;
         this.cd.markForCheck();
       }
     });
+  }
+
+  removeFromWishList() {
+    this.wishlist.remove(this.product).subscribe({
+      complete: () => {
+        this.addingToWishlist = false;
+        this.cd.markForCheck();
+      }
+    })
   }
 
   addToCompare(): void {

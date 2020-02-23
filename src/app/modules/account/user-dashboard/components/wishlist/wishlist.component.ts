@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WishlistService } from 'src/_service/product/wishlist.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _wishList : WishlistService
+  ) { }
 
   ngOnInit() {
+    this._wishList.items$.subscribe(data=>{
+      console.log(data);
+    })
   }
 
 }
