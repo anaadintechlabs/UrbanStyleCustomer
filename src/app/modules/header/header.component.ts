@@ -39,5 +39,11 @@ export class HeaderComponent implements OnInit {
     },err=>{
       catchError(err);
     })
-  } 
+  }
+  
+  changeSearchStatus(value:boolean) {
+    console.log("search captured", value);
+    this.showSearch = value;
+    console.log("status change", this.showSearch);
+  }
 }

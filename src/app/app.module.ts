@@ -14,8 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlockModule } from './modules/blocks/block.module';
 import { JwtServiceService } from 'src/_service/http_&_login/jwt-service.service';
 import { CartSideMenuComponent } from './modules/header/components/cart-side-menu/cart-side-menu.component';
-import { CurrencyFormatPipe } from './shared/pipes/curruncy-formator';
+// import { CurrencyFormatPipe } from './shared/pipes/curruncy-formator';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeOneComponent,
     PageNotFoundComponent,
     CartSideMenuComponent,
-    CurrencyFormatPipe,
+    // CurrencyFormatPipe,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,8 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     BlockModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
     JwtServiceService

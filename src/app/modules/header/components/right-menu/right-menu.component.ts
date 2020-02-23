@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from 'src/_service/http_&_login/user-service.service';
 
 @Component({
@@ -10,7 +10,7 @@ export class RightMenuComponent implements OnInit {
 
   isLoggedIn : boolean;
   searchEnable : boolean = false;
-  public showSearch : EventEmitter<boolean> = new EventEmitter<boolean>(true);
+  @Output() showSearch : EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     public _userService : UserService
@@ -25,8 +25,10 @@ export class RightMenuComponent implements OnInit {
   }
 
   searchClicked() {
-    this.searchEnable != this.searchEnable;
+    console.log('srch clicked');
+    this.searchEnable = !this.searchEnable;
     this.showSearch.emit(this.searchEnable);
+    console.log('srch shoot');
   }
 
 }

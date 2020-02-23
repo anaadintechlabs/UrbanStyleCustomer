@@ -16,7 +16,7 @@
              <i class="fas fa-bars"></i>
          </button>
 
-         <ul id="shop-mobile" *ngIf="!showSearch">
+         <ul id="shop-mobile">
             
              <li class="nav-item">
                <a class="nav-link" href="#"> <i class="fas fa-search"></i> </a>
@@ -31,13 +31,11 @@
              </li>                    
              
            </ul>
-           <ul *ngIf="showSearch">
-             <li></li>
-           </ul>
        
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <menu class=" mr-auto"></menu>
-          <right-menu (showSearch)="showSearch = $event"></right-menu>
+          <menu class=" mr-auto" *ngIf="!showSearch"></menu>
+          <topBarSearch class="mr-auto" style="margin-top: 1em; margin-bottom: 1em; width: 100%;" *ngIf="showSearch"></topBarSearch>
+          <right-menu (showSearch)="changeSearchStatus($event)"></right-menu>
          </div>
          </nav>
     </div>

@@ -8,6 +8,8 @@ import { ProductDescriptionComponent } from './component/product-description/pro
 import { ReviewsComponent } from './component/reviews/reviews.component';
 import { ProductCarouselComponent } from './component/product-carousel/product-carousel.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductCard2Component } from './component/product-card2/product-card2.component';
+import { CurrencyFormatPipe } from './pipes/curruncy-formator';
 
 @NgModule({
     declarations: [
@@ -16,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ImageSliderComponent,
         ProductDescriptionComponent,
         ReviewsComponent,
-        ProductCarouselComponent
+        ProductCarouselComponent,
+        ProductCard2Component,
+        CurrencyFormatPipe
     ],
     imports: [ 
         CommonModule,
@@ -30,7 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ProductDescriptionComponent,
         ReviewsComponent,
         ProductCarouselComponent,
-        SideMenuDirective
+        SideMenuDirective,
+        ProductCard2Component,
+        CurrencyFormatPipe
     ],
     providers: [],
 })

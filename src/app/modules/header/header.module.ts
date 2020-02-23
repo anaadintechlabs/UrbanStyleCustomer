@@ -5,6 +5,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { RightMenuComponent } from './components/right-menu/right-menu.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TopBarSearchComponent } from './components/top-bar-search/top-bar-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,11 +14,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     HeaderComponent, 
     MenuComponent, 
-    RightMenuComponent
+    RightMenuComponent, TopBarSearchComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   exports : [
