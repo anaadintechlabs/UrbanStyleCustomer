@@ -8,5 +8,6 @@ export const urls = {
     saveWishList : 'wishlist/addProductToWishlist',
     saveCart : 'shopping/addProductToShoppingCart',
     filter : 'product/applyHomePageFilter',
-    wishList : 'wishlist/getAllWishListOfUser'
+    wishList : 'wishlist/getAllWishListOfUser',
+    submitReview : 'review/productReviewSave'
 }

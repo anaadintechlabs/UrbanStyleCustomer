@@ -1,1 +1,5 @@
-<p>image-slider works!</p>
+<owl-carousel #owlElement [options]="options" [carouselClasses]="['owl-theme', 'row', 'sliding', 'carousel_1']">
+    <div class="slide" *ngFor="let img of allImages">
+        <img [src]="img" alt="product_image" onError="this.src='../../../../assets/img/bathrug.jpg'">
+    </div>
+</owl-carousel>

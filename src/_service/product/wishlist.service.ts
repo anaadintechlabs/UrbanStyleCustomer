@@ -6,6 +6,7 @@ import { ProductVerient } from 'src/_modals/product';
 import { ApiService } from '../http_&_login/api.service';
 import { UserService } from '../http_&_login/user-service.service';
 import { urls } from 'src/constants/urlLists';
+import { HttpParams } from '@angular/common/http';
 
 interface WishlistData {
     items: ProductVerient[];
@@ -98,8 +99,23 @@ export class WishlistService implements OnDestroy {
         }
     }
 
-    addTowishList() {
-        this._apiService.get
+    getWishListOfUser(id:number) {
+        console.log(id);
+        let param : HttpParams = new HttpParams();
+        param.set('userId',id.toString());
+        let body = {
+          "limit":15,
+          "offset":0,
+          "sortingDirection":"asc",
+          "sortingField":"createdDate"
+        }
+        this._apiService.post(`${urls.wishList}?userId=${id}`,body).subscribe( data=> {
+          console.log(data);
+          if(data.data.wishList.length){
+            localStorage.removeItem('wishlistItems');
+            localStorage.setItem('wishlistItems', data.data.wishList);
+          }
+        })
     }
 
     ngOnDestroy(): void {

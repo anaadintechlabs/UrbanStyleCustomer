@@ -1,2 +1,10 @@
 
-<h2>{{ description.productVariant.product.productName }}</h2>
+<div class="product_desc">
+    <h2 class="desc_heading">{{ description.productVariant.product.productName }}</h2>
+    <p class="desc_content">{{ description.productVariant.prodDesc }}</p>
+    <div class="desc_price">
+        <p class="desc_price_display">{{ description.productVariant.displayPrice | currencyFormat }}</p>
+        <p class="desc_price_discount">{{ description.productVariant.discountPrice | currencyFormat }}</p>
+        <p class="desc_price_actual">{{ description.productVariant.actualPrice | currencyFormat }}</p>
+    </div>
+</div>

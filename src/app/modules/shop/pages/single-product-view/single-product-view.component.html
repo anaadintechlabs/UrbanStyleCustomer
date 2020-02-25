@@ -9,8 +9,8 @@
         </div>
     </div>
     <div class="row py-4" *ngIf="singleProductData">
-        <div class="col-md-6 col-xs-12">
-            <product-image-slider [allImages]="singleProductData?.mainProductPacket?.allImages"></product-image-slider>
+        <div class="col-md-12 col-xs-12">
+            <product-carousel [productList]="singleProductData?.relatedProductsPackets"></product-carousel>
         </div>
     </div>
 </div>
