@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/_service/product/cart.service';
 import { CartItem } from 'src/_modals/cartItem';
+import { Router } from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'cartSideMenu',
@@ -11,7 +12,8 @@ export class CartSideMenuComponent {
   removedItems: CartItem[] = [];
 
   constructor(
-    public cart : CartService
+    public cart : CartService,
+    private _router : Router
   ) { }
 
     remove(item: CartItem): void {
@@ -24,6 +26,10 @@ export class CartSideMenuComponent {
 
     hide() {
       $('body').removeClass('open-cart')
+    }
+
+    checkout() {
+      this._router.navigateByUrl('/classic/order');
     }
 
 }

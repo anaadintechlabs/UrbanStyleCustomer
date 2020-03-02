@@ -170,7 +170,7 @@ export class CartService {
 
     private save(): void {
         if(this._userService.getCurrentUser()) {
-            if(!Object.keys(this._userService.getCurrentUser()).length) {
+            if(Object.keys(this._userService.getCurrentUser()).length) {
                 localStorage.setItem('cartItems', JSON.stringify(this.data.items));
                 this.saveCart();
             } else {

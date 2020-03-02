@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/_service/http_&_login/user-service.service';
 
 type Nav = {
   name : string,
@@ -13,9 +14,15 @@ type Nav = {
 })
 export class NavigationComponent implements OnInit {
   public nav : Nav[] = navigations;
-  constructor() { }
+  constructor(
+    private _userService : UserService
+  ) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this._userService.logout();
   }
 }
 

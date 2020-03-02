@@ -10,6 +10,8 @@ import { ProductCarouselComponent } from './component/product-carousel/product-c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductCard2Component } from './component/product-card2/product-card2.component';
 import { CurrencyFormatPipe } from './pipes/curruncy-formator';
+import { BredcrumbComponent } from './component/bredcrumb/bredcrumb.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -20,12 +22,14 @@ import { CurrencyFormatPipe } from './pipes/curruncy-formator';
         ReviewsComponent,
         ProductCarouselComponent,
         ProductCard2Component,
-        CurrencyFormatPipe
+        CurrencyFormatPipe,
+        BredcrumbComponent
     ],
     imports: [ 
         CommonModule,
         OwlModule,
         FormsModule,
+        RouterModule,
         ReactiveFormsModule 
     ],
     exports: [
@@ -36,7 +40,8 @@ import { CurrencyFormatPipe } from './pipes/curruncy-formator';
         ProductCarouselComponent,
         SideMenuDirective,
         ProductCard2Component,
-        CurrencyFormatPipe
+        CurrencyFormatPipe,
+        BredcrumbComponent
     ],
     providers: [],
 })

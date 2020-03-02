@@ -29,6 +29,7 @@ type MainProduct = {
 export class SingleProductViewComponent implements OnInit {
   
   public singleProductData: SingleProduct;
+  public avgRating : string;
 
   constructor(
     private route : ActivatedRoute,
@@ -46,7 +47,17 @@ export class SingleProductViewComponent implements OnInit {
       if(res.isSuccess){
         this.singleProductData = res.data.SingleProductDetail;
       }
+    });
+    this._apiservice.get(urls.avrgRatingProduct,new HttpParams().set('productId',id)).subscribe(res=>{
+      if(res.isSuccess){
+        this.avgRating = res.data.averageRating.toString();
+        // console.log("avg rating",res);
+      }
     })
+  }
+
+  scroll(el : HTMLElement) {
+    el.scrollIntoView({behavior:"smooth", inline  : 'nearest', block : 'nearest'});
   }
 
 }

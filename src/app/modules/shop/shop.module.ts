@@ -8,6 +8,9 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { ShopHeaderComponent } from './components/shop-header/shop-header.component';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FeatueDetailsComponent } from './components/featue-details/featue-details.component';
+import { ProdDescComponent } from './components/prod-desc/prod-desc.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
 
 
 
@@ -17,7 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShopComponent,
     FiltersComponent,
     ShopHeaderComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    FeatueDetailsComponent,
+    ProdDescComponent,
+    ReviewCardComponent
   ],
   imports: [
     CommonModule,

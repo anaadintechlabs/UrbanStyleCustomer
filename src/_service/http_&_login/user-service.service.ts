@@ -84,7 +84,7 @@ export class UserService {
     console.log('logout');
     this.purgeAuth();
     
-     this.router.navigate(['/home']);
+     this.router.navigate(['/classic/home']);
 //
   }
     
@@ -115,6 +115,7 @@ export class UserService {
     const route ='/signup';
     return this.apiService.postUser('api/auth' + route, credentials).pipe(
       map(data => {
+        console.log("data is",data)
         return data;
       }
     ));

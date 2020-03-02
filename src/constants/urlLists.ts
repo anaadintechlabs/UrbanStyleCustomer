@@ -9,5 +9,6 @@ export const urls = {
     saveCart : 'shopping/addProductToShoppingCart',
     filter : 'product/applyHomePageFilter',
     wishList : 'wishlist/getAllWishListOfUser',
-    submitReview : 'review/productReviewSave'
+    submitReview : 'review/productReviewSave',
+    avrgRatingProduct : 'review/getAverageRatingOnProduct'
 }

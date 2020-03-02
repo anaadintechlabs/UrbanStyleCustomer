@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeOneComponent } from './pages/home-one/home-one.component';
 import { RootComponent } from './components/root/root.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AuthGuardService } from 'src/_service/http_&_login/authGuard.service';
 
 
 const routes: Routes = [
@@ -38,6 +39,11 @@ const routes: Routes = [
           {
               path: 'account',
               loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule)
+          },
+          {
+            path: 'order',
+            canActivateChild : [AuthGuardService],
+            loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule)
           },
           // {
           //     path: 'site',
