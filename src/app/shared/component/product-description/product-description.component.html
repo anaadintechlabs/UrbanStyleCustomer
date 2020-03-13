@@ -86,7 +86,7 @@
         <!-- <a href="javascript:void(0);" class="pro-twt"><span><i class="fas fa-retweet"></i></span></a> -->
       </li>
       <li>
-        <a class="checkout-btn" [routerLink]="['/classic/order']" routerLinkActive="router-link-active" >Checkout</a>
+        <a class="cart-btn" href="javascript:void(0);" (click)="checkout(description.mainProductPacket.mainProduct.productVariant)" >Checkout</a>
       </li>
     </ul>
 

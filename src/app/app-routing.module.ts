@@ -41,6 +41,11 @@ const routes: Routes = [
               loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule)
           },
           {
+            path: 'order/:id',
+            canActivateChild : [AuthGuardService],
+            loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule)
+          },
+          {
             path: 'order',
             canActivateChild : [AuthGuardService],
             loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule)

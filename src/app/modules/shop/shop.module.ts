@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeatueDetailsComponent } from './components/featue-details/featue-details.component';
 import { ProdDescComponent } from './components/prod-desc/prod-desc.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
+import { BlockModule } from '../blocks/block.module';
 
 
 
@@ -30,7 +31,8 @@ import { ReviewCardComponent } from './components/review-card/review-card.compon
     FormsModule,
     ReactiveFormsModule,
     ShopRoutingModule,
-    SharedModule
+    SharedModule,
+    BlockModule
   ]
 })
 export class ShopModule { }

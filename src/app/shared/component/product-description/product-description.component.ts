@@ -7,7 +7,9 @@ import { WishlistService } from 'src/_service/product/wishlist.service';
 import { CurrencyService } from '../../services/currency.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartItem } from 'src/_modals/cartItem';
+import { OrderService } from 'src/_service/product/order.service';
 
 
 type SingleProduct = {
@@ -50,7 +52,9 @@ export class ProductDescriptionComponent implements OnInit {
     private _cart : CartService,
     private _wishlist : WishlistService,
     private currency : CurrencyService,
-    private _route : ActivatedRoute
+    private _route : ActivatedRoute,
+    private _router : Router,
+    private _orderService : OrderService
   ) { 
     this._route.paramMap.subscribe(param=>{
       this.productID = param.get('id');
@@ -146,5 +150,21 @@ export class ProductDescriptionComponent implements OnInit {
         this.cd.markForCheck();
       }
     })
+  }
+
+  checkout(data:ProductVerient) {
+    this.prepareCheckoutItem(data);
+    this._router.navigate(['/classic/order/', data.productVariantId]);
+  }
+
+  prepareCheckoutItem(data:ProductVerient){
+    console.log(data);
+    let cartItem : CartItem = {
+      options : [],
+      product : data,
+      quantity : 1
+    }
+    this._orderService.checkoutItem = cartItem;
+    console.log(this._orderService.checkoutItem);
   }
 }

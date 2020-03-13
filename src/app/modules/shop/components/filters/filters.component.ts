@@ -63,7 +63,7 @@ export class FiltersComponent implements OnInit {
     tempArray.forEach(element => {
       let obj : checkbox = {}
       obj.name = element;
-      obj.checked = true;
+      obj.checked = false;
       uniqueArray.push(obj);
     });
     return uniqueArray;

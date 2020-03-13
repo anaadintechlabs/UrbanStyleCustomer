@@ -12,6 +12,7 @@ import { ProductCard2Component } from './component/product-card2/product-card2.c
 import { CurrencyFormatPipe } from './pipes/curruncy-formator';
 import { BredcrumbComponent } from './component/bredcrumb/bredcrumb.component';
 import { RouterModule } from '@angular/router';
+import { Carousal2Component } from './component/carousal2/carousal2.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
         ProductCarouselComponent,
         ProductCard2Component,
         CurrencyFormatPipe,
-        BredcrumbComponent
+        BredcrumbComponent,
+        Carousal2Component
     ],
     imports: [ 
         CommonModule,
@@ -41,7 +43,8 @@ import { RouterModule } from '@angular/router';
         SideMenuDirective,
         ProductCard2Component,
         CurrencyFormatPipe,
-        BredcrumbComponent
+        BredcrumbComponent,
+        Carousal2Component
     ],
     providers: [],
 })

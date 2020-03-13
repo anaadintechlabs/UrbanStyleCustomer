@@ -10,5 +10,8 @@ export const urls = {
     filter : 'product/applyHomePageFilter',
     wishList : 'wishlist/getAllWishListOfUser',
     submitReview : 'review/productReviewSave',
-    avrgRatingProduct : 'review/getAverageRatingOnProduct'
+    avrgRatingProduct : 'review/getAverageRatingOnProduct',
+
+    getAllAddress : 'api/getAddressDetailsByUser',
+    getAllBankDetails : 'api/getBankDetailsByUser'
 }

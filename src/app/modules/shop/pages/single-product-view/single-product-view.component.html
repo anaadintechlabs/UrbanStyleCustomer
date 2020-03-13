@@ -48,10 +48,11 @@
 
        
 
-        <!-- <div class="row py-4" *ngIf="singleProductData">
+        <div class="row py-4" *ngIf="singleProductData">
             <div class="col-md-12 col-xs-12">
-                <product-carousel [productList]="singleProductData?.relatedProductsPackets"></product-carousel>
+                <app-carousal2 [productList]="singleProductData?.relatedProductsPackets"></app-carousal2>
             </div>
-        </div> -->
+        </div>
     </div>
+    <brand-slider></brand-slider>
 </section>

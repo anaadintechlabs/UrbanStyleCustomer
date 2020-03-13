@@ -1,0 +1,105 @@
+<div class="form-card">
+    <div class="row">
+        <div class="col-12 col-md-6 addressDetails" *ngFor="let add of address; let i = index">
+            <!-- <h6>Address {{ i+1 }}</h6> -->
+            <p>{{ add.addressOne }}</p>
+            <p>{{ add.cite.cityName }}, {{ add.state.stateName }} , {{ add.country.countryName }},</p>
+            <p>{{ add.zip }}</p>
+            <p>
+                <span>
+                    <a href="JavaScript.void(0);">
+                        Deliever to this Address
+                    </a>
+                </span> | 
+                <span>
+                    <a href="JavaScript.void(0);">
+                        Delete this Address
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="form-card">
+    <div class="row">
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="">First Name*</label>
+            <input type="text" name="uname" /> 
+        </div>
+        </div>
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="">Last Name*</label>
+            <input type="text" name="" /> 
+        </div>
+        </div>
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="">Middle Name*</label>
+            <input type="text" name="" /> 
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="">Company name (optional)</label>
+            <input type="text" name="uname" /> 
+        </div>
+        </div>
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="">Email*</label>
+            <input type="email" name="email" /> 
+        </div>
+        </div>
+        <div class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="">Phone*</label>
+            <input type="text" name="" /> 
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-3">
+        <div class="form-group">
+            <label for="">Country*</label>
+            <select class="form-control" name="" id="">
+            <option>India</option>
+            <option>UK</option>
+            <option>UAE</option>
+            </select>
+        </div>
+        </div>
+        <div class="col-12 col-md-3">
+        <div class="form-group">
+            <label for="">City*</label>
+            <input type="text" name="" /> 
+        </div>
+        </div>
+        <div class="col-12 col-md-3">
+        <div class="form-group">
+            <label for="">State / Province</label>
+            <input type="text" name="" /> 
+        </div>
+        </div>
+        <div class="col-12 col-md-3">
+        <div class="form-group">
+            <label for="">Postal Code*</label>
+            <input type="text" name="" /> 
+        </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+        <div class="form-group">
+            <label for="">Address*</label>
+            <textarea class="form-control" name="" id="" rows="1"></textarea>
+        </div>  
+        </div>
+    </div>
+</div> 
