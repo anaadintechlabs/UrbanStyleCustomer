@@ -9,7 +9,7 @@
         <div class="row">
         <div class="col-12 col-md-3">
             <p>Product</p>
-            <span>Mulberry Silk Bundle</span>
+            <span>{{ _orderService.SinglecheckoutItem.product.product.productName }}</span>
         </div>
         <div class="col-12 col-md-2">
             <p>Name</p>
@@ -17,19 +17,19 @@
         </div>
         <div class="col-12 col-md-3">
             <p>Price</p>
-            <span>$ 30</span>
+            <span>{{ _orderService.SinglecheckoutItem.product.displayPrice | currencyFormat }}</span>
         </div>
         <div class="col-12 col-md-2">
             <p>Quantity</p>
             <ul class="quantity-Hl">
-            <li class="minus-icon"><i class="fas fa-minus"></i></li>
-            <li><span>2</span></li>
-            <li class="plus-icon"><i class="fas fa-plus"></i></li>
+                <li class="minus-icon" (click)="minus()"><i class="fas fa-minus"></i></li>
+                <li><span>{{ _orderService.SinglecheckoutItem.quantity }}</span></li>
+                <li class="plus-icon" (click)="plus()"><i class="fas fa-plus"></i></li>
             </ul>
         </div>
         <div class="col-12 col-md-2">
             <p>Total</p>
-            <span>$256</span>
+            <span>{{ ( _orderService.SinglecheckoutItem.product.displayPrice * _orderService.SinglecheckoutItem.quantity ) | currencyFormat }}</span>
         </div>
         </div>
     </div>
@@ -55,39 +55,39 @@
         </div>
         <div class="col-12 col-md-3">
             <h5>Country:</h5>
-            <p>India</p>
+            <p>{{ _orderService.addressForm.value.country }}</p>
         </div>
         <div class="col-12 col-md-3">
             <h5>City:</h5>
-            <p>Indore</p>
+            <p>{{ _orderService.addressForm.value.cite }}</p>
         </div>
         <div class="col-12 col-md-3">
             <h5>State:</h5>
-            <p>Albanisia</p>
+            <p>{{ _orderService.addressForm.value.state }}</p>
         </div>
         <div class="col-12 col-md-3">
             <h5>Zip/Postal Code:</h5>
-            <p>450021</p>
+            <p>{{ _orderService.addressForm.value.zip }}</p>
         </div>
         <div class="col-12 col-md-3">
             <h5>Address:</h5>
-            <p>102 Malwa Tower Indore</p>
+            <p>{{ _orderService.addressForm.value.addressOne }}</p>
         </div>
         </div>  
     </div>
 
     <div class="row mt-3 mb-5">
-        <div class="col-12 col-md-4">
+        <!-- <div class="col-12 col-md-4">
         <h4 class="sc-title">Delivery information</h4>
         <p>Free Delivery $0.00 / Delivery in 7 to 12  Days</p>
-        </div> 
+        </div>  -->
         <div class="col-12 col-md-4">
         <h4 class="sc-title">Payment information</h4>
-        <p>Card number:XXX-XXX-XXX-7224</p>
+        <p>{{ _orderService.bankInfo.value.cardNumber }}</p>
         </div> 
         <div class="col-12 col-md-4">
         <h4 class="sc-title">Total Price:</h4>
-        <p>$256</p>
+        <p>{{ ( _orderService.SinglecheckoutItem.product.displayPrice * _orderService.SinglecheckoutItem.quantity ) | currencyFormat }}</p>
         </div>
     </div>
 

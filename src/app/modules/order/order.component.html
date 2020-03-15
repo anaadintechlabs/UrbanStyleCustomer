@@ -15,12 +15,12 @@
   
     <section class="innerPageContent">
         <div class="container">
-            <div class="row mb-4" *ngIf="_orderService.checkoutItem"> 
+            <!-- <div class="row mb-4" *ngIf="_orderService.SinglecheckoutItem"> 
                 <div class="col-12">
                     <div class="row card-details-sec">
                         <div class="col-12 col-md-3">
                             <p>Product</p>
-                            <span>{{ _orderService.checkoutItem.product.product.productName }}</span>
+                            <span>{{ _orderService.SinglecheckoutItem.product.product.productName }}</span>
                         </div>
                         <div class="col-12 col-md-2">
                             <p>Name</p>
@@ -28,23 +28,23 @@
                         </div>
                         <div class="col-12 col-md-3">
                             <p>Price</p>
-                            <span> {{ _orderService.checkoutItem.product.displayPrice | currencyFormat }} </span>
+                            <span> {{ _orderService.SinglecheckoutItem.product.displayPrice | currencyFormat }} </span>
                         </div>
                         <div class="col-12 col-md-2">
                             <p>Quantity</p>
                             <ul class="quantity-Hl">
                             <li class="minus-icon" (click)="minus()"><i class="fas fa-minus"></i></li>
-                            <li><span>{{ _orderService.checkoutItem.quantity }}</span></li>
+                            <li><span>{{ _orderService.SinglecheckoutItem.quantity }}</span></li>
                             <li class="plus-icon" (click)="plus()"><i class="fas fa-plus"></i></li>
                             </ul>
                         </div>
                         <div class="col-12 col-md-2">
                             <p>Total</p>
-                            <span> {{ ( _orderService.checkoutItem.product.displayPrice * _orderService.checkoutItem.quantity ) | currencyFormat }}</span>
+                            <span> {{ ( _orderService.SinglecheckoutItem.product.displayPrice * _orderService.SinglecheckoutItem.quantity ) | currencyFormat }}</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         <div class="row">
             <div class="col-12 mb-4">
             <p class="bg-theme return-login">Returning customer? <a href="javascript:void(0);">Click here to login</a> </p>  
@@ -86,9 +86,9 @@
                     </ul> <!-- fieldsets -->
 
                     <!-- step 1 -->
-                    <fieldset>
-                       <app-billing-details></app-billing-details>
-                        <button type="button" name="next" class="next action-button" value="Next Step"><i class="fas fa-chevron-right"></i></button>
+                    <fieldset class="stepOne">
+                        <app-billing-details (nextStep)="next('stepOne')"></app-billing-details>
+                        <button type="button" name="next" class="action-button" value="Next Step" (click)="next('stepOne')"><i class="fas fa-chevron-right"></i></button>
                     </fieldset>
 
                     <!-- step 2 -->
@@ -126,17 +126,17 @@
                     </fieldset> -->
 
                     <!-- step 3 -->
-                    <fieldset>
-                      <app-bank-details></app-bank-details>
-                      <button type="button" name="previous" class="previous action-button-previous" value="Previous"><i class="fas fa-chevron-left"></i></button>
-                      <button type="button" name="next" class="next action-button" value="Next Step"><i class="fas fa-chevron-right"></i></button>
+                    <fieldset class="stepTwo">
+                      <app-bank-details (nextStep)="next('stepTwo')"></app-bank-details>
+                      <button type="button" name="previous" class="action-button-previous" value="Previous" (click)="prev('stepTwo')"><i class="fas fa-chevron-left"></i></button>
+                      <button type="button" name="next" class="action-button" value="Next Step" (click)="next('stepTwo')"><i class="fas fa-chevron-right"></i></button>
                     </fieldset>
 
                     <!-- step 4   -->
-                    <fieldset class="stepFour">
+                    <fieldset class="stepThree">
                        <app-review-order></app-review-order>
-                       <button type="button" name="previous" class="previous action-button-previous" value="Previous"><i class="fas fa-chevron-left"></i></button>
-                       <button type="button" name="make_payment" class="next action-button" value="Place order now">Place order now</button>
+                       <button type="button" name="previous" class="action-button-previous" value="Previous" (click)="prev('stepThree')"><i class="fas fa-chevron-left"></i></button>
+                       <button type="button" name="make_payment" class="placeOrder action-button" value="Place order now" (click)="placeOrder()">Place order now</button>
                     </fieldset>
 
                     <!-- step 5 -->

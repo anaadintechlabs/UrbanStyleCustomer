@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from 'src/_service/product/order.service';
 
 @Component({
   selector: 'app-review-order',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewOrderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public _orderService : OrderService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  minus() {
+    if(this._orderService.SinglecheckoutItem.quantity > 1) {
+      this._orderService.SinglecheckoutItem.quantity--;
+    }
+  }
+
+  plus() {
+      this._orderService.SinglecheckoutItem.quantity++;
   }
 
 }

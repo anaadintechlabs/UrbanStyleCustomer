@@ -1,18 +1,18 @@
-<div class="form-card">
+<div class="form-card" *ngIf="address && address.length">
     <div class="row">
         <div class="col-12 col-md-6 addressDetails" *ngFor="let add of address; let i = index">
             <!-- <h6>Address {{ i+1 }}</h6> -->
             <p>{{ add.addressOne }}</p>
             <p>{{ add.cite.cityName }}, {{ add.state.stateName }} , {{ add.country.countryName }},</p>
             <p>{{ add.zip }}</p>
-            <p>
+            <p class="link">
                 <span>
-                    <a href="JavaScript.void(0);">
+                    <a  (click)="chooseAddress(add)">
                         Deliever to this Address
                     </a>
                 </span> | 
                 <span>
-                    <a href="JavaScript.void(0);">
+                    <a >
                         Delete this Address
                     </a>
                 </span>
@@ -22,7 +22,7 @@
 </div>
 
 
-<div class="form-card">
+<div class="form-card" [formGroup]="_orderService.addressForm">
     <div class="row">
         <div class="col-12 col-md-4">
         <div class="form-group">
@@ -67,29 +67,30 @@
         <div class="col-12 col-md-3">
         <div class="form-group">
             <label for="">Country*</label>
-            <select class="form-control" name="" id="">
+            <!-- <select class="form-control" name="" id="">
             <option>India</option>
             <option>UK</option>
-            <option>UAE</option>
-            </select>
+            <option>UAE</option> -->
+            <input type="text" formControlName="country" />
+            <!-- </select> -->
         </div>
         </div>
         <div class="col-12 col-md-3">
         <div class="form-group">
             <label for="">City*</label>
-            <input type="text" name="" /> 
+            <input type="text" name="" formControlName="cite" /> 
         </div>
         </div>
         <div class="col-12 col-md-3">
         <div class="form-group">
             <label for="">State / Province</label>
-            <input type="text" name="" /> 
+            <input type="text" name="" formControlName="state" /> 
         </div>
         </div>
         <div class="col-12 col-md-3">
         <div class="form-group">
             <label for="">Postal Code*</label>
-            <input type="text" name="" /> 
+            <input type="text" name="" formControlName="zip" /> 
         </div>
         </div>
     </div>
@@ -98,8 +99,13 @@
         <div class="col-12">
         <div class="form-group">
             <label for="">Address*</label>
-            <textarea class="form-control" name="" id="" rows="1"></textarea>
+            <textarea class="form-control" name="" id="" rows="1" formControlName="addressOne"></textarea>
         </div>  
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12 text-right">
+            <a href="javaScript:coid(0)" (click)="selectAddress()" class="cart-btn">Use this address</a>
         </div>
     </div>
 </div> 

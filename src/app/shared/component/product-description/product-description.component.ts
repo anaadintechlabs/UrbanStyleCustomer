@@ -54,7 +54,7 @@ export class ProductDescriptionComponent implements OnInit {
     private currency : CurrencyService,
     private _route : ActivatedRoute,
     private _router : Router,
-    private _orderService : OrderService
+    private _orderService : OrderService,
   ) { 
     this._route.paramMap.subscribe(param=>{
       this.productID = param.get('id');
@@ -154,7 +154,7 @@ export class ProductDescriptionComponent implements OnInit {
 
   checkout(data:ProductVerient) {
     this.prepareCheckoutItem(data);
-    this._router.navigate(['/classic/order/', data.productVariantId]);
+    this._router.navigate(['/classic/order/']);
   }
 
   prepareCheckoutItem(data:ProductVerient){
@@ -164,7 +164,7 @@ export class ProductDescriptionComponent implements OnInit {
       product : data,
       quantity : 1
     }
-    this._orderService.checkoutItem = cartItem;
-    console.log(this._orderService.checkoutItem);
+    this._orderService.SinglecheckoutItem = cartItem;
+    console.log(this._orderService.SinglecheckoutItem);
   }
 }
