@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeOneComponent } from './pages/home-one/home-one.component';
 import { RootComponent } from './components/root/root.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AuthGuardService } from 'src/_service/http_&_login/authGuard.service';
 
 
 const routes: Routes = [
@@ -31,14 +32,24 @@ const routes: Routes = [
           //     path: 'blog',
           //     loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)
           // },
-          // {
-          //     path: 'shop',
-          //     loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
-          // },
-          // {
-          //     path: 'account',
-          //     loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule)
-          // },
+          {
+              path: 'shop',
+              loadChildren: () => import('./modules/shop/shop.module').then(m => m.ShopModule)
+          },
+          {
+              path: 'account',
+              loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule)
+          },
+          {
+            path: 'order/:id',
+            canActivateChild : [AuthGuardService],
+            loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule)
+          },
+          {
+            path: 'order',
+            canActivateChild : [AuthGuardService],
+            loadChildren: () => import('./modules/order/order.module').then(m => m.OrderModule)
+          },
           // {
           //     path: 'site',
           //     loadChildren: () => import('./modules/site/site.module').then(m => m.SiteModule)

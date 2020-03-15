@@ -14,6 +14,7 @@ import { ProductVerient } from 'src/_modals/product';
 export class HomeOneComponent implements OnInit {
 
   public featuredProduct : ProductVerient[] = [];
+  public dealOfDays : ProductVerient[] = [];
   
   constructor(
     private _apiService : ApiService
@@ -21,12 +22,27 @@ export class HomeOneComponent implements OnInit {
 
   ngOnInit() {
     this.getAllFeaturedProducts();
+    this.getDealOfTheDays();
   }
 
   public getAllFeaturedProducts() {
     return this._apiService.get(urls.allFeaturedProducts).subscribe(data=>{
       if(data.isSuccess){
-        this.featuredProduct = data.featuredProducts;
+        this.featuredProduct = data.data.featuredProducts;
+        console.log("data==========>",this.featuredProduct)
+      } else {
+
+      }
+    },err=>{
+      catchError(err);
+    })
+  }
+
+  public getDealOfTheDays() {
+    return this._apiService.get(urls.dealOftheDay).subscribe(data=>{
+      if(data.isSuccess){
+        this.dealOfDays = data.data.featuredProducts;
+        console.log("data==========>",this.featuredProduct)
       } else {
 
       }
@@ -34,6 +50,5 @@ export class HomeOneComponent implements OnInit {
       catchError(err);
     })
   } 
-
 
 }

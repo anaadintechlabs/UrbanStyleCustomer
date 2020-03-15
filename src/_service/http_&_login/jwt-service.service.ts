@@ -1,21 +1,20 @@
-// import { Injectable } from '@angular/core';
-// import { User } from '../../_modals/user.modal';
+import { Injectable } from '@angular/core';
 
-// @Injectable()
-// export class JwtServiceService {
+@Injectable()
+export class JwtServiceService {
 
-//   constructor() { }
+  constructor() { }
 
-//   getToken(): String {
-//     return window.localStorage['jwtToken'];
-//   }
+  getToken(): String {
+    return window.localStorage['jwtToken'];
+  }
 
-//   saveToken(token: String) {
-//     window.localStorage['jwtToken'] = token;
-//   }
+  saveToken(token: String) {
+    window.localStorage['jwtToken'] = token;
+  }
 
-//   destroyToken() {
-//     window.localStorage.removeItem('jwtToken');
-//   }
+  destroyToken() {
+    window.localStorage.removeItem('jwtToken');
+  }
 
-// }
+}
