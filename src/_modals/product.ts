@@ -27,8 +27,8 @@ export interface ProductVerient {
     product: product
     productIdType: string
     sku: string
-    prodName: string
-    prodDesc: string
+    variantName: string
+    variantCode: string
     mainImageUrl: string
     displayPrice: number
     actualPrice: number

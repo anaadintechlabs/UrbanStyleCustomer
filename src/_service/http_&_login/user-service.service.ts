@@ -167,5 +167,69 @@ export class UserService {
       }
     ));
   }
-  
+
+
+  getAllReviewsOfUser(filter)
+  {
+    let currunt_user = JSON.parse(this.getUser());
+    const route ='review/getAllReviewsOfUser?userId='+currunt_user.id;
+    return this.apiService.post( route, filter).pipe(
+      map(data => {
+        return data;
+      }
+    ));
+  }
+
+
+  softDeleteProductReview(id)
+  {
+    const route ='review/softDeleteProductReview?reviewId='+id;
+    return this.apiService.delete( route).pipe(
+      map(data => {
+        return data.data;
+      }
+    ));
+  }
+
+  getAddressDetailsByUser()
+  {
+    let currunt_user = JSON.parse(this.getUser());
+    const route ='api/getAddressDetailsByUser?userId='+currunt_user.id;
+    return this.apiService.getUser( route).pipe(
+      map(data => {
+        return data.data;
+      }
+    ));
+  }
+
+  deleteAddressDetails(addressId)
+  {
+    let currunt_user = JSON.parse(this.getUser());
+    let url =
+      "api/deleteAddressDetails?userId=" +
+      currunt_user.id +
+      "&addressId=" +
+      addressId +
+      "&status=0";
+    return this.apiService.deleteUser( url).pipe(
+      map(data => {
+        return data.data;
+      }
+    ));
+  }
+
+
+  changePassword(obj)
+  {
+    let currunt_user = JSON.parse(this.getUser());
+    let url =
+      "api/user/changePassword?userId=" +
+      currunt_user.id ;
+    return this.apiService.postUser(url,obj).pipe(
+      map(data => {
+        return data;
+      }
+    ));
+  }
+
 }
