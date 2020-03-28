@@ -13,6 +13,7 @@ import { UserReviewComponent } from './components/user-review/user-review.compon
 import { ReturnsComponent } from './components/returns/returns.component';
 import { ManageAddressComponent } from './components/manage-address/manage-address.component';
 import { WalletComponent } from './components/wallet/wallet.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { WalletComponent } from './components/wallet/wallet.component';
     UserDashboardRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class UserDashboardModule { }

@@ -7,7 +7,7 @@
           <h4>Add Address</h4>      
       </div>
       <div class="col-sm-4 pdBtm">
-        <div (click)="navigateToAddGroup()" class="add_address">
+        <div  class="add_address">
           <div class="address_icon">
             <i class="material-icons">
               add
@@ -18,14 +18,13 @@
       <div  *ngFor="let address of addressDetails" class="col-sm-4 pdBtm">
         <div class="currunt_address">
           <div class="currunt_address_detail">
-              <h4>{{ user?.userName }} </h4>
               <p>Address: {{ address.addressOne }} {{ address.addressTwo }} </p>
               <p>City : {{ address?.cite?.cityName }} {{ address?.zip}} </p>
               <p>State : {{ address?.state?.stateName }} </p>
               <p>Country : {{ address?.country?.countryName }} </p>
           </div>
           <div class="currunt_address_footer">
-            <a class="currunt_address_footer_Link brR" (click)="navigateToEditOrViewAddress('edit', address)">Edit</a>
+            <!-- <a class="currunt_address_footer_Link brR" >Edit</a> -->
             <a class="currunt_address_footer_Link" (click)="deleteAddressDetails(address)">Delete</a>
           </div>
         </div>
